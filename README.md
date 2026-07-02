@@ -1,18 +1,10 @@
-# Technical Challenge — Sourcing Analysis with AI
+# Sourcing Analysis with AI — Technical Challenge
 
-> Sourcing funnel analysis with applied AI for candidate prioritization support.
+Esse challenge surgiu de uma pergunta que qualquer recrutador já teve: de onde vêm os candidatos que a gente realmente contrata? E quando não vale a pena continuar insistindo?
 
-## Objective
+Peguei um dataset fictício de sourcing, analisei o funil de ponta a ponta e ainda treinei um modelo de Regressão Logística pra ajudar na priorização — não pra tomar decisões, mas pra apoiar.
 
-Analyze a fictional sourcing/recruitment dataset to answer:
-
-- Which sourcing strategies convert best?
-- What signals indicate a higher chance of advancement?
-- When is it worth persisting with a candidate?
-- When is conversion probability too low to justify effort?
-- Are there meaningful patterns by channel, recruiter, or candidate profile?
-
-## Repository Structure
+## Estrutura do repositório
 
 ```
 sourcing-analysis-challenge/
@@ -26,63 +18,58 @@ sourcing-analysis-challenge/
     └── sourcing_challenge_final.md
 ```
 
-## Key Insights
+## O que os dados mostraram
 
-| Channel | Candidates | Hire Rate | Response Rate |
+| Canal | Candidatos | Taxa de Contratação | Taxa de Resposta |
 |---|---|---|---|
-| GitHub | 73 | 11.0% | 68.5% |
-| Inbound | 69 | 10.1% | 79.7% |
-| Hunting | 75 | 9.3% | 64.0% |
-| Talent Pool | 68 | 8.8% | 75.0% |
-| LinkedIn | 81 | 8.6% | 63.0% |
-| Community | 89 | 7.9% | 67.4% |
-| Event | 82 | 4.9% | 67.1% |
-| Referral | 64 | 4.7% | 59.4% |
+| GitHub | 73 | 11,0% | 68,5% |
+| Inbound | 69 | 10,1% | 79,7% |
+| Hunting | 75 | 9,3% | 64,0% |
+| Talent Pool | 68 | 8,8% | 75,0% |
+| LinkedIn | 81 | 8,6% | 63,0% |
+| Community | 89 | 7,9% | 67,4% |
+| Event | 82 | 4,9% | 67,1% |
+| Referral | 64 | 4,7% | 59,4% |
 
-### Overall Funnel
+### Funil geral
 
-| Stage | Candidates | Cumulative Conversion |
+| Etapa | Candidatos | Conversão Acumulada |
 |---|---|---|
 | Sourced | 601 | 100% |
-| Response | 408 | 67.9% |
-| Screening | 308 | 51.2% |
-| Interview 1 | 234 | 38.9% |
-| Assessment | 201 | 33.4% |
-| Offer | 62 | 10.3% |
-| **Hired** | **49** | **8.2%** |
+| Response | 408 | 67,9% |
+| Screening | 308 | 51,2% |
+| Interview 1 | 234 | 38,9% |
+| Assessment | 201 | 33,4% |
+| Offer | 62 | 10,3% |
+| **Hired** | **49** | **8,2%** |
 
-## AI Usage
+## Sobre o uso de IA
 
-A **Logistic Regression** model was built to estimate the probability of hire based on variables such as sourcing channel, seniority, location, work mode, and response time. The model achieved **AUC = 0.690** and is used as a pipeline prioritization tool — not as an automated decision-maker.
+O modelo de Regressão Logística considera canal de sourcing, senioridade, localização, modo de trabalho e tempo de resposta. Chegou a **AUC = 0,690** — não perfeito, mas útil como ferramenta de ranqueamento.
 
-The AI workflow follows a **human-in-the-loop** approach:
-1. The model generates a priority ranking based on estimated hire probability
-2. The recruiter validates with qualitative context
-3. The team reviews false positives/negatives monthly
-4. The model is recalibrated with new data
+O fluxo é human-in-the-loop:
+1. Modelo gera ranking de probabilidade de contratação
+2. Recrutador valida com contexto qualitativo
+3. Time revisa falsos positivos/negativos mensalmente
+4. Modelo é recalibrado com dados novos
 
-## How to Run
+## Como rodar
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/juliacintral/sourcing-analysis-challenge.git
 cd sourcing-analysis-challenge
-
-# 2. Install dependencies
 pip install -r requirements.txt
-
-# 3. Open the notebook
 jupyter notebook notebooks/01_sourcing_analysis.ipynb
 ```
 
-## Recruiter Recommendations
+## O que eu recomendaria na prática
 
-- **Prioritize GitHub, Inbound, and Hunting** for profiles with the strongest final conversion
-- **Set a first-contact SLA** — delays in outreach reduce funnel advancement
-- **Use technical score + response time together**, not in isolation
-- **Build prioritization queues**: high, medium, and low conversion probability
-- **Reactivate the Talent Pool** for candidates with role alignment and fast response history
-- **Distinguish operational failures** (closed headcount, timing) from sourcing quality failures
+- Priorizar **GitHub, Inbound e Hunting** — maior conversão final
+- Definir **SLA de primeiro contato** — demora no outreach reduz avanço no funil
+- Usar **score técnico + tempo de resposta juntos**, nunca isolados
+- Criar **filas de prioridade** por probabilidade de contratação
+- Reativar o **Talent Pool** pra candidatos com alinhamento e histórico de resposta rápida
+- Separar falhas operacionais (vaga fechada, timing) de falhas de sourcing
 
 ## Tech Stack
 
@@ -91,15 +78,10 @@ jupyter notebook notebooks/01_sourcing_analysis.ipynb
 - scikit-learn (Logistic Regression)
 - Jupyter Notebook
 
-## Final Report
+## Relatório completo
 
-The file `docs/sourcing_challenge_final.md` contains the full written report including:
-- Approach and decisions made
-- Detailed funnel analysis
-- Channel-by-channel comparison
-- Advancement signals and low-potential indicators
-- AI usage in the workflow
-- Practical recommendations
+O arquivo `docs/sourcing_challenge_final.md` tem a análise escrita completa: abordagem, decisões, comparação entre canais, sinais de avanço e indicadores de baixo potencial.
 
 ---
-*Technical Challenge — People Analytics & Sourcing with AI*
+
+Feito com ❤️ juliacintral
